@@ -10,13 +10,13 @@
 ## 🚀 Install
 
 ```bash
-npm install react-use-object
+npm install @cactusjackson/react-use-object
 ```
 
 Or with yarn:
 
 ```bash
-yarn add react-use-object
+yarn add @cactusjackson/react-use-object
 ```
 
 ---
@@ -53,7 +53,7 @@ class Person {
 ```
 
 ```jsx
-import { useObject } from 'react-use-object';
+import { useObject } from '@cactusjackson/react-use-object';
 
 function App() {
   const [name, setName] = useState("Mateo");
