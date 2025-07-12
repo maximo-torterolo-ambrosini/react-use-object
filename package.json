@@ -2,6 +2,7 @@
   "name": "react-use-object",
   "type": "module",
   "version": "1.0.0",
+  "description": "React hook to manage reactive class instances using proxies.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/types/index.d.ts",
@@ -46,7 +47,6 @@
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4"
   },
-  "private": true,
   "workspaces": [
     ".",
     "playground"
