@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Person from './Person'
-
+import { useObject } from '@cactusjackson/react-use-object'
 
 export default function App() {
   const [name, setName] = useState('Mateo')
