@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import useObject from '../../src/useObject'
 import Person from './Person'
 
 
