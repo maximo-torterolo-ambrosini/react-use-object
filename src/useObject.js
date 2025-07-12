@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { useRef, useMemo, useReducer } from 'react'
+import ReactiveProxy from './ReactiveProxy'
 
 const isFunction = (value) => typeof value === 'function'
 
@@ -13,7 +14,7 @@ const isFunction = (value) => typeof value === 'function'
  * @param {() => T} factoryFn - A function that returns a new instance of the object.
  * @param {Array} [deps=[]] - An array of dependencies that, when changed, cause the
  *                            factory to be called again to create a new object instance.
- * @param {string[]} [methods=[]] - An array of method names that, when called, trigger
+ * @param {string[]} [mutableMethods=[]] - An array of method names that, when called, trigger
  *                                  a re-render of the component.
  * @return {T} A proxied object instance that triggers re-renders when specified
  *                   methods are called or when dependencies change.
@@ -44,41 +45,20 @@ const isFunction = (value) => typeof value === 'function'
  * }
  * ```
  */
-function useObject(factoryFn, deps = [], methods = []) {
+function useObject(factoryFn, deps = [], mutableMethods = []) {
   const [, forceUpdate] = useReducer((x) => x + 1, 0)
 
   // Store the object instance
   const instanceRef = useRef(null)
 
-  // Create or update the object based on dependencies
+  // Create or update the reactful object based on stateful dependencies
   const object = useMemo(() => {
-    // Call the factory to create a new instance
     const newInstance = factoryFn()
-
-    // Proxy to intercept method calls
-    const handler = {
-      get(target, prop) {
-        const value = target[prop]
-        // If the property is a method listed in 'methods', wrap it
-        if (methods.includes(prop) && isFunction(value)) {
-          return (...args) => {
-            const result = value.apply(target, args)
-            // Trigger re-render by updating state
-            forceUpdate()
-            return result
-          }
-        }
-        // Return the original property
-        return isFunction(value) ? value.bind(target) : value
-      },
-    }
-
-    // Update the instanceRef with the new proxied instance
-    instanceRef.current = new Proxy(newInstance, handler)
+    
+    instanceRef.current = ReactiveProxy.create(newInstance, mutableMethods, forceUpdate)
     return instanceRef.current
-  }, deps) // Re-run when dependencies change
+  }, deps)
 
-  // Return the proxied object
   return object
 }
 
