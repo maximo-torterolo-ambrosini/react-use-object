@@ -1,15 +1,17 @@
 import { defineConfig } from 'vite'
-
-// For future extensions with TS
-// import dts from 'vite-plugin-dts';
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
+  plugins: [dts()],
   build: {
     lib: {
       entry: 'src/index.js',
-      name: 'useObjectReact',
-      fileName: 'useObject',
+      name: 'react-use-object',
+      fileName: 'index',
       formats: ['es', 'cjs'],
+    },
+    rollupOptions: {
+      external: ['react'],
     },
     outDir: 'dist',
     emptyOutDir: true,

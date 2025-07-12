@@ -1,7 +1,24 @@
 {
-  "name": "use-object-react",
-  "version": "0.0.0",
+  "name": "react-use-object",
   "type": "module",
+  "version": "1.0.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -23,7 +40,9 @@
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
     "jsdom": "^26.1.0",
+    "typescript": "^5.8.3",
     "vite": "^7.0.4",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4"
   },
   "private": true,
