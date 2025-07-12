@@ -2,8 +2,6 @@
 import { useRef, useMemo, useReducer } from 'react'
 import ReactiveProxy from './ReactiveProxy'
 
-const isFunction = (value) => typeof value === 'function'
-
 /**
  * A React hook that creates and manages a reactive object instance, triggering
  * re-renders when specified methods are called or when dependencies change.
@@ -54,7 +52,7 @@ function useObject(factoryFn, deps = [], mutableMethods = []) {
   // Create or update the reactful object based on stateful dependencies
   const object = useMemo(() => {
     const newInstance = factoryFn()
-    
+
     instanceRef.current = ReactiveProxy.create(newInstance, mutableMethods, forceUpdate)
     return instanceRef.current
   }, deps)

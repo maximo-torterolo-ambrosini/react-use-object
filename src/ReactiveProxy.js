@@ -35,7 +35,6 @@ class ReactiveProxy {
 
   /**
    * Creates a reactive instance of an object, intercepting mutating methods.
-   *
    * @param {T} target - Original object to be wrapped by the Proxy.
    * @param {string[]} mutatingMethods - method names that are considered capable of triggering state mutation.
    * @param {OnChangeType} onChange - Callback to invoke when a mutating method is called.
