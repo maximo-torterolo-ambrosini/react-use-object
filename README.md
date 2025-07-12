@@ -3,7 +3,7 @@
 > A tiny React hook for managing class-based objects with reactive state updates — no setState needed.
 
 [![npm version](https://img.shields.io/npm/v/@cactusjackson/react-use-object)](https://www.npmjs.com/package/@cactusjackson/react-use-object)
-[![License](https://img.shields.io/npm/l/@cactusjackson/react-use-object)](LICENSE)
+[![License](https://img.shields.io/npm/l/%40cactusjackson%2Freact-use-object)](LICENSE)
 
 ---
 
