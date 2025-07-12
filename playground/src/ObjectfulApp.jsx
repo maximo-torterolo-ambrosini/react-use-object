@@ -1,22 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Person from './Person'
 import { useObject } from '@cactusjackson/react-use-object'
+import Input from './Input'
+import RenderCount from './RenderCount'
 
-export default function App() {
-  const [name, setName] = useState('Mateo')
-  const [updateNameInput, setUpdateNameInput] = useState('')
+export default function ObjectfulApp() {
+  const input = useObject(() => new Input(''), [], ['setInitialValue'])
   const person = useObject(
-      () => Person.named(name, 'Rodriguez', 20),
-      [name],
-      ['birthday'],
+      () => Person.named(input.initialValue() || 'Nazareno', 'Rodriguez', 20),
+      [],
+      ['birthday', 'changeName'],
   )
 
-  if (!person) return null
-
-  console.log(person)
   return (
-    <div style={{ padding: 20 }}>
-      <h1>useObject playground</h1>
+    <div style={{ padding: 20, height: '100%' }}>
+      <h1>Objectful playground</h1>
       <div>
         <p>
           {person.name()}
@@ -37,20 +35,21 @@ export default function App() {
         </p>
         <input
           type="text"
-          value={updateNameInput}
+          value={input.initialValue()}
           onChange={(e) => {
-            setUpdateNameInput(e.target.value)
+            input.setInitialValue(e.target.value)
           }}
         />
         <button
           onClick={() =>{
-            setName(updateNameInput)
-            setUpdateNameInput('')
+            person.changeName(input.initialValue())
+            input.setInitialValue('')
           }}
         >
             Update
         </button>
       </div>
+      <RenderCount/>
     </div>
   )
 }

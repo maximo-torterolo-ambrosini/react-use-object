@@ -28,6 +28,10 @@ class Person {
     return this.#name + ' ' + this.#lastName
   }
 
+  changeName(newName) {
+    this.#name = newName
+  }
+
   static named(name, lastName, age) {
     return new Person(name, lastName, age)
   }
