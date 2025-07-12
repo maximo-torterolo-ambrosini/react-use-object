@@ -9,7 +9,7 @@ function PureStateApp() {
   const birthday = () => setAge((prev) => prev + 1)
 
   const handleUpdateName = () => {
-    if (input.trim()) setName(input.trim())
+    setName(input.trim())
     setInput('')
   }
 
