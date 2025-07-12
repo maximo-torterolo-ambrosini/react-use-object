@@ -1,4 +1,4 @@
-# react-use-object
+# 🌵📦 react-use-object
 
 > A tiny React hook for managing class-based objects with reactive state updates — no setState needed.
 

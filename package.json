@@ -1,5 +1,5 @@
 {
-  "name": "react-use-object",
+  "name": "@cactusjackson/react-use-object",
   "type": "module",
   "version": "1.0.0",
   "description": "React hook to manage reactive class instances using proxies.",
@@ -50,5 +50,19 @@
   "workspaces": [
     ".",
     "playground"
+  ],
+  "keywords": [
+    "react",
+    "hook",
+    "proxy",
+    "react hook",
+    "reactive object",
+    "react-use-object",
+    "class state",
+    "object state",
+    "custom hook",
+    "proxy hook",
+    "oop",
+    "object oriented"
   ]
 }
