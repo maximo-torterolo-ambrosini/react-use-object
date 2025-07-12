@@ -26,29 +26,29 @@ class Person {
 
 describe('ReactiveProxy', () => {
   it('should proxy access to regular properties', () => {
-    const martinTarimiqui = new Person('Martin Tarimiqui', 23)
+    const johnDoe = new Person('John Doe', 23)
     const onChangeSpy = vi.fn()
 
     /** @type {Person} */
     const proxy = ReactiveProxy.create(
-        martinTarimiqui,
+        johnDoe,
         ['birthday'],
         onChangeSpy,
     )
 
-    expect(proxy.greet()).toBe('Hi, I\'m Martin Tarimiqui')
+    expect(proxy.greet()).toBe('Hi, I\'m John Doe')
     expect(proxy.age()).toBe(23)
-    expect(proxy.name).toBe('Martin Tarimiqui')
+    expect(proxy.name).toBe('John Doe')
     expect(onChangeSpy).not.toBeCalled()
   })
 
   it('should trigger onChange when mutating method is called', () => {
-    const martinTarimiqui = new Person('Martin Tarimiqui', 23)
+    const johnDoe = new Person('John Doe', 23)
     const onChangeSpy = vi.fn()
 
     /** @type {Person} */
     const proxy = ReactiveProxy.create(
-        martinTarimiqui,
+        johnDoe,
         ['birthday'],
         onChangeSpy,
     )
