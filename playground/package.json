@@ -7,12 +7,13 @@
   },
   "license": "ISC",
   "dependencies": {
+    "@cactusjackson/react-use-object": "*",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "@cactusjackson/react-use-object": "*"
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "@vitejs/plugin-react": "^4.6.0"
   },
   "type": "module"
 }

@@ -31,8 +31,6 @@
     "playground": "npm run dev --workspace=playground"
   },
   "devDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "@eslint/js": "9.31.0",
     "@testing-library/react": "^16.3.0",
     "eslint": "8.57.1",
@@ -43,6 +41,8 @@
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "typescript": "^5.8.3",
     "vite": "^7.0.4",
     "vite-plugin-dts": "^4.5.4",
@@ -65,5 +65,8 @@
     "proxy hook",
     "oop",
     "object oriented"
-  ]
+  ],
+  "dependencies": {
+    "@cactusjackson/react-use-object": "^1.1.0"
+  }
 }
