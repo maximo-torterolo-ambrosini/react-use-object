@@ -73,4 +73,31 @@ describe('ReactiveProxy', () => {
     expect(proxy.count).toBe(1)
     expect(onChange).toHaveBeenCalledTimes(1)
   })
+
+  // eslint-disable-next-line max-len
+  it('should trigger onChange when async mutating method is called', async () => {
+    const onChangeSpy = vi.fn()
+
+    class Counter {
+      value = 0
+
+      async increment() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            this.value++
+            resolve()
+          }, 10)
+        })
+      }
+    }
+
+    const counter = new Counter()
+
+    const proxy = ReactiveProxy.create(counter, ['increment'], onChangeSpy)
+
+    await proxy.increment()
+
+    expect(proxy.value).toBe(1)
+    expect(onChangeSpy).toBeCalledTimes(1)
+  })
 })

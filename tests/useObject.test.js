@@ -88,4 +88,45 @@ describe('useObject', () => {
 
     expect(first).toBe(second)
   })
+
+  it('should re-render after async mutating method is awaited', async () => {
+    class AsyncCounter {
+      #count
+
+      constructor(initial = 0) {
+        this.#count = initial
+      }
+
+      async increment() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            this.#count++
+            resolve()
+          }, 20)
+        })
+      }
+
+      value() {
+        return this.#count
+      }
+    }
+
+
+    let renders = 0
+
+    const { result } = renderHook(() => {
+      renders++
+      return useObject(() => new AsyncCounter(0), [], ['increment'])
+    })
+
+    expect(result.current.value()).toBe(0)
+    expect(renders).toBe(1)
+
+    await act(async () => {
+      await result.current.increment()
+    })
+
+    expect(result.current.value()).toBe(1)
+    expect(renders).toBe(2)
+  })
 })
