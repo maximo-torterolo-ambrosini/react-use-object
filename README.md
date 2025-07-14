@@ -21,11 +21,32 @@ yarn add @cactusjackson/react-use-object
 
 ---
 
-## ✨ Why?
+## 🔍 Comparison with Other State Management Solutions
 
-React state works great for primitives and plain objects, but managing **mutable class instances** (e.g., models with private fields and methods) can be tricky.
+| Feature / Library                       | 🌵📦 `react-use-object`           | 🐻 Zustand                  | ⚛️ Redux Toolkit            | Ⓜ️ MobX                        | 🇻 Valtio                     |
+|----------------------------------------|----------------------------------|-----------------------------|-----------------------------|------------------------------|-------------------------------|
+| Programming paradigm                   | Object-oriented (OOP)            | Functional & mutable        | Functional & immutable      | Reactive OOP (with decorators) | Proxy-based reactivity       |
+| Explicit control over mutations        | ✅ Yes, method-based             | ⚠️ Any change applies        | ✅ Reducers define it        | ❌ Implicit (auto-tracked)    | ❌ Implicit (auto-tracked)    |
+| Encapsulation (true domain objects)    | ✅ Full class & private fields   | ❌ No                        | ❌ No                        | ⚠️ Partial                    | ❌ No                         |
+| Designed for DDD (Domain-Driven Design)| ✅ Yes                           | ❌ No                        | ⚠️ Only with boilerplate     | ⚠️ With custom setup          | ❌ No                         |
+| Renders only on explicit mutation      | ✅ Yes                           | ❌ Based on usage            | ✅ Controlled by reducer     | ⚠️ Sometimes unpredictable     | ⚠️ Any detected change        |
+| API simplicity                         | ✅ One hook, simple usage        | ✅ Minimal                   | ❌ Verbose (actions, reducers) | ⚠️ Requires decorators        | ✅ Minimal                    |
+| Works with rich models / domain logic  | ✅ Yes, supports method logic    | ❌ No                        | ❌ No                        | ✅ Yes                        | ⚠️ Partially (not class-based)|
+| Non-invasive (no decorators/setup)     | ✅ Zero config                   | ✅ Yes                      | ❌ High boilerplate          | ❌ Requires decorators        | ⚠️ Implicit wrapping          |
+| React mental model alignment           | ✅ Manual triggers, no magic     | ✅ Mostly aligned            | ✅ Fully aligned             | ❌ Magic-like behaviors       | ⚠️ Implicit reactivity        |
 
-This hook lets you use any class and re-render your component when **you mutate it through specific methods** — without needing `setState`.
+---
+
+## ✅ Why `react-use-object`?
+
+`react-use-object` is built for developers who:
+
+- Think in terms of **objects, behavior, and encapsulated logic**.
+- Use **Domain-Driven Design (DDD)** or **rich models** in their apps.
+- Want **predictable re-renders**, only when explicit mutating methods are called.
+- Prefer **clean, low-boilerplate code** without sacrificing power.
+
+It provides fine-grained control over when React updates — **you decide which methods trigger reactivity**, making it ideal for apps with non-trivial business logic.
 
 ---
 
